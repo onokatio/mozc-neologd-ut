@@ -21,17 +21,20 @@ license=('custom')
 makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
 source=("https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F25%2F25267%2Fmozc-neologd-ut-2.23.2815.102.20191226.1.tar.xz"
+	"https://ja.osdn.net/frs/chamber_redir.php?m=xtom_hk&f=%2Fusers%2F24%2F24526%2Fmozc-2.23.2815.102%2Bdfsg%7Eut2-20171008d%2B20191014eoan.tar.xz"
 		add-new-japanese-era.patch
         # https://github.com/google/mozc/issues/441#issue-321728877
         fix-for-gcc81.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
 sha1sums=('SKIP'
+	  'SKIP'
           '94502348e60659765d3e6ae2780d07e5104a06a2'
           '2bad0705a0a09d8d5a79c874b59c485052da2b38'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 prepare() {
+  cp -f 'mozc-2.23.2815.102+dfsg~ut2-20171008d+20191014eoan'/mut/src/data/dictionary_oss/dictionary*.txt mozc-neologd-ut-${pkgver}/src/data/dictionary_oss/
   cd mozc-neologd-ut-${pkgver}/src
 
   # add a new Japanese era
